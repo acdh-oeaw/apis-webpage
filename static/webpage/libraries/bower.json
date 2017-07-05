@@ -22,5 +22,8 @@
     "tooltipster": "^4.2.5",
     "leaflet.markercluster": "Leaflet.markercluster#^1.0.6",
     "linkurious.js": "Linkurious/linkurious.js#^1.5.1"
+  },
+  "resolutions": {
+    "jquery": "1.9.1 - 3"
   }
 }
