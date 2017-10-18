@@ -134,16 +134,17 @@ function init_apis_highlighter(project_id, entity_id) {
             content: 'Loading...',
             contentAsHTML: true,
             interactive: true,
+            zIndex: 999,
             trigger: 'click',
             theme: 'tooltipster-light',
             side: ['bottom'],
 
         functionPosition: function(instance, helper, position){
-            //console.log(position)
+            //console.log(position);
             position.coord.top = ($.ApisHigh.selected_text.rect.top + (position.distance + $.ApisHigh.selected_text.rect.height));
             position.coord.left = ($.ApisHigh.selected_text.rect.left - ((position.size.width/2)-($.ApisHigh.selected_text.rect.width/2)));
-            position.target = $.ApisHigh.selected_text.rect.left + ($.ApisHigh.selected_text.rect.width/2)
-            position.size.height = 'auto'
+            position.target = $.ApisHigh.selected_text.rect.left + ($.ApisHigh.selected_text.rect.width/2);
+            position.size.height = 'auto';
             //console.log(position.target)
             return position;
     },

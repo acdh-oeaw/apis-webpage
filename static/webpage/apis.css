@@ -137,6 +137,7 @@ a {
 
 .tooltipster-base div {
     height: auto;
+    z-index: auto;
 }
 
 #accordion { margin-right:10px; }
