@@ -10,7 +10,7 @@ function get_menu_object(elem) {
     if (elem['kind'] == 'txt') {
     var res = '<a class="list-group-item">'+elem['name']+'</a>'}  
     else if (elem['kind'] == 'frm') {
-        var res = '<a class="list-group-item" onclick=GetFormAjaxHighl("'+elem.api.api_endpoint+'")>'+elem['name']+'</a>'
+        var res = '<a class="list-group-item con-menu-item" data-endpoint="'+elem.api.api_endpoint+'">'+elem['name']+'</a>'
     } else if (elem['kind'] == 'fn') {
         var res = '<a class="list-group-item" onclick='+elem.api.api_endpoint+'>'+elem['name']+'</a>'
     }
@@ -115,8 +115,12 @@ function get_selected_text(txt_id) {
 
 
 function init_apis_highlighter(project_id, entity_id) {
-    $.get("/api/HLProjects/"+project_id.toString()+"/", function(data){
-        //menu = create_apis_menu(data.results[0])
+
+    return $.ajax({
+        type: 'GET',
+        url: "/api/HLProjects/"+project_id.toString()+"/",
+        success: function(data) {
+            //menu = create_apis_menu(data.results[0])
         //$( "#test_menu" ).append(menu)
         //console.log(data)
         $.ApisHigh = {}
@@ -179,6 +183,8 @@ function init_apis_highlighter(project_id, entity_id) {
     });
 
         //$.ApisHigh.tt_instance = $(cl_2).tooltipster('instance');
+        }
     })
+
 }
 

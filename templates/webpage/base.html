@@ -7,7 +7,7 @@
       <meta name="viewport" content="width=device-width, initial-scale=1">
       {% block metaDescription %}
       <meta name="description" content="A Web-App">
-      <meta name="author" content="Peter Andorfer">
+      <meta name="author" content="Matthias Schlögl">
       {% endblock %}
 
       <!-- Bootstrap-->
@@ -44,6 +44,12 @@
       <link rel="stylesheet" type="text/css" href="{% static 'webpage/libraries/bower_components/tooltipster/dist/css/tooltipster.bundle.min.css' %}" />
       <link rel="stylesheet" type="text/css" href="{% static 'webpage/libraries/bower_components/tooltipster/dist/css/plugins/tooltipster/sideTip/themes/tooltipster-sideTip-light.min.css' %}" />
       <script type="text/javascript" src="{% static 'webpage/apis_highlighter.js' %}"></script>
+      <link href="/static/autocomplete_light/vendor/select2/dist/css/select2.css" type="text/css" media="all" rel="stylesheet" />
+        <link href="/static/autocomplete_light/select2.css" type="text/css" media="all" rel="stylesheet" />
+        <script type="text/javascript" src="/static/autocomplete_light/jquery.init.js"></script>
+        <script type="text/javascript" src="/static/autocomplete_light/autocomplete.init.js"></script>
+        <script type="text/javascript" src="/static/autocomplete_light/vendor/select2/dist/js/select2.full.js"></script>
+        <script type="text/javascript" src="/static/autocomplete_light/select2.js"></script>
       <!-- Piwik -->
         <script type="text/javascript">
           var _paq = _paq || [];
