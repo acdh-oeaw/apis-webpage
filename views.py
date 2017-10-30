@@ -16,13 +16,11 @@ def start_view(request):
 
 
 def paas_view(request):
-    context = RequestContext(request)
-    return render(request, 'webpage/paas.html', context)
+    return render(request, 'webpage/paas.html')
 
 
 def apis_view(request):
-    context = RequestContext(request)
-    return render(request, 'webpage/apis.html', context)
+    return render(request, 'webpage/apis.html')
 
 
 #################################################################
