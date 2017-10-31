@@ -22,7 +22,7 @@
     "tooltipster": "^4.2.5",
     "leaflet.markercluster": "Leaflet.markercluster#^1.0.6",
     "linkurious.js": "sennierer/linkurious.js#^1.5.4",
-    "CETEIcean": "TEIC/CETEIcean#^0.4.0"
+    "CETEI": "https://github.com/TEIC/CETEIcean/releases/download/v0.4.0/CETEI.js"
   },
   "resolutions": {
     "jquery": "1.9.1 - 3"
