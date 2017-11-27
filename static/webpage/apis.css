@@ -2,6 +2,23 @@ a.list-group-item {
   cursor: pointer;
 }
 
+a {
+	color: #0d1c93;
+}
+
+a:hover {
+    color: #0056b3;
+}
+
+div.panel.panel-default {
+    border: black;
+    border-style: solid;
+    border-radius: 2px;
+    border-width: thin;
+    padding: 5px;
+    margin-bottom: 3px;
+}
+
 div.txt {
     line-height: 2em;
 }

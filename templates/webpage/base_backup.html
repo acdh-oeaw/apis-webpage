@@ -1,37 +1,32 @@
 {% load staticfiles %}
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
-    <meta name="author" content="">
-    <link rel="icon" href="favicon.ico">
+      <meta charset="utf-8">
+      <title>{% block Titel %} Apis-WebApp {% endblock %}</title>
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      {% block metaDescription %}
+      <meta name="description" content="A Web-App">
+      <meta name="author" content="Matthias Schlögl">
+      {% endblock %}
 
-    <title>APIS</title>
-    <script src="https://code.jquery.com/jquery-3.2.1.min.js"
-			  integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
-			  crossorigin="anonymous"></script>
-    <script>window.jQuery || document.write('<script src="assets/js/jquery.js"><\/script>')</script>
-    <script src="{% static 'webpage/libraries/fundament/assets/js/popper.min.js' %}"></script>
-    <script src="{% static 'webpage/libraries/fundament/assets/js/bootstrap.js' %}"></script>
-    <!-- Material icons font -->
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-
-    <!-- Fontawesome icons -->
-    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
-
-    <!-- Fundament core CSS -->
+      <!-- Bootstrap-->
+      <link rel="stylesheet" href="{% static 'webpage/libraries/bower_components/bootstrap/dist/css/bootstrap.min.css' %}"/>
+      <!-- Bootstrap Themes. see https://bootswatch.com/
+        <link rel="stylesheet" href="https://bootswatch.com/flatly/bootstrap.min.css">
+      -->
+      <!--scroll to top CSS -->
       <link rel="stylesheet" href="{% static 'webpage/apis.css' %}" />
-      <link href="{% static 'webpage/libraries/fundament/src/css/fundament.css' %}" rel="stylesheet">
-
       <link rel="stylesheet" href="{% static 'webpage/libraries/scroll-to-top/css/ap-scroll-top.min.css'%}" />
       <!--leflet CSS -->
       <link rel="stylesheet" href="{% static 'webpage/libraries/bower_components/leaflet/dist/leaflet.css' %}" />
-      <!-- jQuery
-      <script type="text/javascript" src="{% static 'webpage/libraries/bower_components/jquery/dist/jquery.min.js' %}"></script>-->
-      <!-- Bootstrap
-      <script type="text/javascript" src="{% static 'webpage/libraries/bower_components/bootstrap/dist/js/bootstrap.min.js' %}"></script>-->
+      <!-- jQuery-->
+      <script type="text/javascript" src="{% static 'webpage/libraries/bower_components/jquery/dist/jquery.min.js' %}"></script>
+      <!-- Bootstrap -->
+      <script type="text/javascript" src="{% static 'webpage/libraries/bower_components/bootstrap/dist/js/bootstrap.min.js' %}"></script>
+      <!-- angular.js
+      <script type="text/javascript" src="{% static 'webpage/libraries/angularjs/angular.min.js' %}"></script>
+      -->
       <script type="text/javascript" src="{% static 'webpage/libraries/bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js' %}"></script>
       <link rel="stylesheet" href="{% static 'webpage/libraries/bower_components/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css' %}" type="text/css"/>
       <script type="text/javascript" src="{% static 'webpage/libraries/bower_components/bootstrap-multiselect/dist/js/bootstrap-multiselect.js' %}"></script>
@@ -42,6 +37,8 @@
       <script src="{% static 'webpage/libraries/bower_components/leaflet/dist/leaflet.js' %}"></script>
       <link rel="stylesheet" href="{% static 'webpage/libraries/bower_components/leaflet.markercluster/dist/MarkerCluster.css'%}" />
       <link rel="stylesheet" href="{% static 'webpage/libraries/bower_components/leaflet.markercluster/dist/MarkerCluster.Default.css'%}" />
+      <!--
+      <link rel="stylesheet" href="{% static 'django_tables2/themes/paleblue/css/screen.css' %}" />-->
       <script src="{% static 'webpage/libraries/bower_components/leaflet.markercluster/dist/leaflet.markercluster-src.js' %}"></script>
       <script type="text/javascript" src="{% static 'webpage/libraries/bower_components/tooltipster/dist/js/tooltipster.bundle.min.js' %}"></script>
       <link rel="stylesheet" type="text/css" href="{% static 'webpage/libraries/bower_components/tooltipster/dist/css/tooltipster.bundle.min.css' %}" />
@@ -71,7 +68,7 @@
       {% endblock %}
   </head>
 
-  <body class="contained">
+  <body>
     <!-- Piwik -->
     <noscript>
       <p>
@@ -79,31 +76,35 @@
       </p>
     </noscript>
     <!-- End Piwik Code -->
-    <nav class="navbar navbar-expand-md navbar-light fixed-top bg-white">
+    <nav class="navbar navbar-default">
       <div class="container">
-        <a class="navbar-brand" href="#">APIS</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-
-        <div class="collapse navbar-collapse" id="navbarsExampleDefault">
-          <ul class="navbar-nav mr-auto">
-            <li class="nav-item active">
-              <a href="{% url 'webpage:start' %}" class="nav-link">Home <span class="sr-only">(current)</span></a>
-            </li>
-            <li class="dropdown">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+            <span class="sr-only">Toggle navigation!</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+        </div>  
+        </div>
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav">
+                <li class="dropdown">
                   <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Home
                     <span class="caret"></span>
                   </a>
                   <ul class="dropdown-menu">
-                    <li class="nav-item">
-                        <a href="{% url 'webpage:apis-project' %}" class="nav-link">APIS-Project</a>
+                    <li>
+                        <a href="{% url 'webpage:start' %}">Start</a>
                     </li>
-                    <li class="nav-item">
-                        <a href="{% url 'webpage:paas-project' %}" class="nav-link">PAAS-Project</a>
+                    <li>
+                        <a href="{% url 'webpage:apis-project' %}">APIS-Project</a>
                     </li>
-                    <li class="nav-item">
-                        <a href="{% url 'docs' index %}index.html" class="nav-link">Documentation</a>
+                    <li>
+                        <a href="{% url 'webpage:paas-project' %}">PAAS-Project</a>
+                    </li>
+                    <li>
+                        <a href="{% url 'docs' index %}index.html">Documentation</a>
                     </li>
                   </ul>
                 </li>
@@ -113,9 +114,9 @@
                   </a>
                   <ul class="dropdown-menu">
                       {% for ent in entities_list %}
-                    <li class="nav-item">
-                        <a href="{% url 'entities:generic_entities_list' ent %}" class="nav-link">{{ent|title}}</a>
-                    </li class="nav-item">
+                    <li>
+                        <a href="{% url 'entities:generic_entities_list' ent %}">{{ent|title}}</a>
+                    </li>
                       {% endfor %}
 
                   </ul>
@@ -125,107 +126,76 @@
                   <span class="caret"></span>
                   </a>
                   <ul class="dropdown-menu">
-                    <li class="nav-item">
-                        <a href="{% url 'entities:birth_death_map' %}" class="nav-link">Person Place map</a>
+                    <li>
+                        <a href="{% url 'entities:birth_death_map' %}">Person Place map</a>
                     </li>
-                    <li class="nav-item">
-                        <a href="{% url 'entities:generic_network_viz' %}" class="nav-link">Network</a>
+                    <li>
+                        <a href="{% url 'entities:generic_network_viz' %}">Network</a>
                     </li>
-                    <li class="nav-item">
-                        <a href="{% url 'highlighter:agreement' %}" class="nav-link">Inter-Annotator Agreement</a>
+                    <li>
+                        <a href="{% url 'highlighter:agreement' %}">Inter-Annotator Agreement</a>
                     </li>
                   </ul>
                 </li>
-            <!--
-            <div class="navbar-search input-group-sm">
-              <span class="input-group-btn">
-                <button class="btn btn-secondary" type="button"><i class="material-icons">search</i></button>
-              </span>
-              <input type="text" class="form-control" placeholder="Search for..." aria-label="Search for...">
-            </div>
-            -->
-            <div class="navbar-icons">
-              <a href="https://github.com/acdh-oeaw/fundament" target="_blank" rel="noopener" aria-label="GitHub">
-                <i class="fa fa-github" aria-hidden="true" alt="GitHub" title="GitHub"></i>
-              </a>
-              <a href="#">
-                <i class="fa fa-search" aria-hidden="true" alt="Search" title="Search"></i>
-              </a>
-          </ul>
-          <div class="acdh-nav-brand">
-            <p>A Service of Austrian Center for Digital Humanities</p>
-            <a href="https://www.oeaw.ac.at/acdh/acdh-home/" target="_blank" rel="noopener" aria-label="ACDH">
-              <img src="{% static 'webpage/libraries/fundament/assets/images/acdh_logo120h.png' %}" alt="ACDH" title="Austrian Center for Digital Humanities">
-            </a>
-          </div>
-          <div class="oeaw-nav-brand">
-            <a href="https://www.oeaw.ac.at" target="_blank" rel="noopener" aria-label="ÖAW">
-              <img src="{% static 'webpage/libraries/fundament/assets/images/oeaw_logo.png' %}" alt="ÖAW" title="Österreichische Akademie der Wissenschaften">
-            </a>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+              <li class="dropdown">
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{{ request.user.username }}<span class="caret"></span>
+                  </a>
+                  <ul class="dropdown-menu">
+                    <li>
+                        <a href="{% url 'webpage:user_login' %}">Log-In</a>
+                    </li>
+                    <li>
+                        <a href="{% url 'webpage:user_logout' %}">Log-Out</a>
+                    </li>
+                      <li>
+                        <a href="{% url 'registration_register' %}">Registration</a>
+                    </li>
+                  </ul>
+              </li>
+            </ul>
+        </div>
+    </nav>
+
+    <div id="content" class="container">
+    <div class="alert alert-warning">
+    <strong>Warning!</strong> Work in Progress. But entered data will be preserved.
+    </div>
+      {% block content %}
+      {% endblock %}
+    </div>
+
+    <div class="container text-center">
+      <div class="row text-center" style="padding-top: 50px">
+      <div class="col-sm-6">
+        <div style="float: left">
+          <a href="https://acdh.oeaw.ac.at/acdh/" class="navlink" target="_blank">
+              <img src="{% static 'webpage/img/logo.png' %}" alt="ACDH" style="height:65px" />
+          </a>
+        </div>
+        <div>
+          <a href="http://www.oeaw.ac.at/inz/institut-fuer-neuzeit-und-zeitgeschichtsforschung/" class="navlink" target="_blank">
+              <img src="{% static 'webpage/img/INZ-Logo.png' %}" alt="INZ" style="height:65px" />
+          </a>
+        </div>
+        </div>
+        <div class="col-sm-6">
+        <div style="float: left">
+          <a href="http://www.oeaw.ac.at/isr/" class="navlink" target="_blank">
+              <img src="{% static 'webpage/img/ISR_logo.png' %}" alt="ISR" style="height:65px" />
+          </a>
+        </div>
+        <div>
+          <a href="http://www.oeaw.ac.at/acdh/en/apis" class="navlink" target="_blank">
+              <img src="{% static 'webpage/img/apis.png' %}" alt="APIS-Project" style="height:65px" />
+          </a>
           </div>
         </div>
       </div>
-    </nav>
-
-    <main role="main">
-        {% block jumbotron %}
-        {% endblock jumbotron %}
-      <!-- Main jumbotron for a primary marketing message or call to action -->
-
-      <div class="container">
-        <!-- Example row of columns -->
-        {% block content %}
-        {% endblock %}
-
-      </div> <!-- /container -->
-
-    </main>
-
-
-    <footer class="main-footer" role="contentinfo">
-        <div class="container">
-        	<div class="footer-wrapper">
-                
-                <div class="footer-sep">
-                    <i class="fa fa-comment-o" aria-hidden="true"></i> CONTACT
-                                                <span class="footer-login-button">
-                                <a href="https://arche.acdh.oeaw.ac.at/browser/user/login">
-                                    <i class="fa fa-sign-in" aria-hidden="true"></i>
-                                </a>
-                            </span>
-                                    </div>
-    
-                <div class="el-block col-md-3 first">
-                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2033.7249785477802!2d16.37577444283506!3d48.20990150015764!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x476d079f8cc04aef%3A0xee66fb1ed728ec45!2sAustrian+Centre+for+Digital+Humanities!5e0!3m2!1sen!2sus!4v1507743890390" width="280" height="230" frameborder="0" style="border:0" allowfullscreen=""></iframe>
-                </div>
-    
-                <div class="el-block col-md-4">
-                    <div class="csc-textpic-text">
-                        <p class="bodytext">ACDH-ÖAW<br>Austrian Centre for Digital Humanities<br>Austrian Academy of Sciences
-                        </p>
-                        <p class="bodytext">Sonnenfelsgasse 19,<br>1010 Vienna
-                        </p>
-                        <p class="bodytext">T: +43 1 51581-2200<br>E: <a style="font-weight:600;" href="mailto:acdh@oeaw.ac.at">acdh(at)oeaw.ac.at</a></p>
-                    </div>
-                </div>
-    
-                <div class="el-block col-md-3 last">
-                    <h3>HELPDESK</h3>
-                    <p class="bodytext">ACDH runs a helpdesk offering advice for questions related to various digital humanities topics.</p>
-                    <p class="bodytext"><a href="mailto:acdh@oeaw.ac.at" class="helpdesk-button">ASK US!</a></p>
-                </div>
-            </div>    
-        </div>
-        <div class="footer-imprint-bar">
-        	© Copyright OEAW | <a href="https://arche.acdh.oeaw.ac.at/browser/imprint">Impressum/Imprint</a>
-        </div>
-    </footer>
-
-
-    <!-- Bootstrap core JavaScript
-    ================================================== -->
-    <!-- Placed at the end of the document so the pages load faster -->
+    </div>
     {% block scripts %}
+    
     <!-- scroll-up-bottom -->
     <script type="text/javascript">
             // Setup plugin with default settings
