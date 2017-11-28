@@ -1,0 +1,210 @@
+{% extends "webpage/base.html" %}
+{% load staticfiles %}
+{% block scriptHeader %}
+{{ block.super }}
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+        <title>APIS at a glance</title>
+        <link rel="stylesheet" href="{% static 'webpage/libraries/bower_components/reveal.js/css/reveal.css' %}">
+        <link rel="stylesheet" href="{% static 'webpage/libraries/bower_components/reveal.js/css/theme/simple.css' %}">
+
+        <!-- Theme used for syntax highlighting of code -->
+        <link rel="stylesheet" href="{% static 'webpage/libraries/bower_components/reveal.js/lib/css/zenburn.css' %}">
+
+        <!-- Printing and PDF exports -->
+        <script>
+            var link = document.createElement( 'link' );
+            link.rel = 'stylesheet';
+            link.type = 'text/css';
+            link.href = window.location.search.match( /print-pdf/gi ) ? "{% static 'webpage/libraries/bower_components/reveal.js/css/print/pdf.css' %}" : "{% static 'webpage/libraries/bower_components/reveal.js/css/print/paper.css' %}";
+            document.getElementsByTagName( 'head' )[0].appendChild( link );
+        </script>
+{% endblock scriptHeader %}
+{% block content %}
+        <div class="reveal" style="height: 800px">
+            <div class="slides">
+                <section>
+                    <h1>The APIS Project</h1>
+                    <h3>matthias.schloegl@oeaw.ac.at</h3>
+                </section>
+                <section>
+                    <section>
+                        <ul>
+                            <li>Based on the "Austrian Biographical Dictionary" (ÖBL)</li>
+                            <li>~18.500 biographies of people who "had an impact" on - back then - Austrian soil and died between 1815 and 1955</li>
+                            <li>The APIS project intends to semantically enrich these biographies (relations to people, places etc. )</li>
+                            <li>..and use that data to research migration patterns.</li>
+                        </ul>
+                    </section>
+                    <section>
+                        <blockquote cite="https://apis.acdh.oeaw.ac.at/entities/entity/person/90074/detail" style="background: #f2f2f2">
+                        &ldquo;Stud. in Wien und Linz, legte 1795 in St. Florian die Ordensgelübde ab, 1797 Priesterweihe, arbeitete zuerst in der Seelsorge, dann als Prof. für Bibelstudium des Neuen und Alten Testamentes am Lyzeum in Linz, Dir. des Gymnasiums in Linz und Mitarbeiter der „Linzer Monatsschrift“. 1814–23 Kanzleidir. des Stiftes, 1818 Leiter des Stiftsdekanates, 1823 Propst, 1823–48 Generaldir. der o.ö. Gymnasien....&rdquo;
+                        </blockquote>
+                    </section>
+                    <section>
+                        <blockquote cite="https://apis.acdh.oeaw.ac.at/entities/entity/person/90074/detail"  style="background: #f2f2f2">
+                        &ldquo;Stud. in <a href="http://www.geonames.org/2761369/vienna.html">Wien</a> und <a href="http://sws.geonames.org/2772400/about.rdf">Linz</a>, legte 1795 in St. Florian die Ordensgelübde ab, 1797 Priesterweihe, arbeitete zuerst in der Seelsorge, dann als Prof. für Bibelstudium des Neuen und Alten Testamentes am Lyzeum in Linz, Dir. des Gymnasiums in Linz und Mitarbeiter der „Linzer Monatsschrift“. 1814–23 Kanzleidir. des Stiftes, 1818 Leiter des Stiftsdekanates, 1823 Propst, 1823–48 Generaldir. der o.ö. Gymnasien....&rdquo;
+                        </blockquote>
+                    </section>
+                </section>
+                <section>
+                    <section>
+                        <h3>ideas</h3>
+                        <ul>
+                            <li class="fragment">simple data model<span class="fragment"> >> serialize later in various formats/data models (karma, ontop)</span></li>
+                            <li class="fragment">rock solid and widely used software stack<span class="fragment"> >> less bugs, better documented, easier to develop</span></li>
+                            <li class="fragment">hybrid approach<span class="fragment"> >> researchers and tools use the same webtool/database</span></li>
+                        </ul>
+                    </section>
+                    <section>
+                        <span style="float: left; width: 38%; position: relative">
+                            <h3>datamodel</h3>
+                                <p class="fragment current-visible" style="position: absolute;">5 core entities: people, places, institutions, events and works</p>
+                                <p class="fragment current-visible" style="position: absolute;">all interrelated >> relations contain a type (SKOS), a time span and some free text fields</p>
+                                <p class="fragment current-visible" style="position: absolute;">every entity type can have several text types attached</p>
+                                <p class="fragment current-visible" style="position: absolute;">every annotation is linked to an annotation project, a user and a entity or relation >> allows for multiple annotations (e.g. different tools) of one and the same text</p>
+                                <p class="fragment" style="position: absolute;">every change of an object is serialized to json and stored with user and timestamp (revisioning)</p>
+                        </span>
+                        <img src="{% static 'webpage/img/lyon17/datamodel_graph.png' %}" style="float: right;width: 60%">
+                    </section>
+                    <section>
+                        <h3>software</h3>
+                        <ul>
+                            <li>Django (Python Web Development Framework</li>
+                            <li>MySQL (Database)</li>
+                            <li>Stanbol (Reference resources)</li>
+                            <li>spacy and Gate for NLP</li>
+                        </ul>
+                    </section>
+                </section>
+                <section>
+                    <section>
+                        <span style="float: left; width: 28%">
+                            <ul>
+                                <li class="fragment">custom filters and lists</li>
+                                <li class="fragment">download of filtered lists in various formats</li>
+                                <li class="fragment">creating new entities from custom reference resources</li>
+                            </ul>
+                        </span>
+                        <video data-autoplay src="{% static 'webpage/img/lyon17/apis screencast list views.mp4' %}" class="video-apis"></video>
+                    </section>
+                    <section>
+                        <span style="float: left; width: 28%">
+                            <ul>
+                                <li class="fragment">metadata of entity on the left</li>
+                                <li class="fragment">link to other entities on the right</li>
+                                <li class="fragment">auto-import of entities from reference resources</li>
+                            </ul>
+                        </span>
+                        <video data-autoplay src="{% static 'webpage/img/lyon17/apis screencast detail view.mp4' %}" class="video-apis"></video>
+                    </section>
+                    <section>
+                        <span style="float: left; width: 28%">
+                            <ul>
+                                <li class="fragment">annotation of text</li>
+                                <li class="fragment">annotation projects</li>
+                                <li class="fragment">filter annotations to show</li>
+                            </ul>
+                        </span>
+                        <video data-autoplay src="{% static 'webpage/img/lyon17/apis screencast annotation.mp4' %}" class="video-apis"></video>
+                    </section>
+                    <section>
+                        <span style="float: left; width: 28%">
+                            <ul>
+                                <li class="fragment">iteratively create network</li>
+                                <li class="fragment">add whole collections</li>
+                                <li class="fragment">export to graphml/json</li>
+                            </ul>
+                        </span>
+                        <video data-autoplay src="{% static 'webpage/img/lyon17/apis screencast network.mp4' %}" class="video-apis"></video>
+                    </section>
+                </section>
+                <section>
+                    <h2>Thanks!</h2>
+                    <p>matthias.schloegl@oeaw.ac.at</p>
+                    <p>https://github.com/acdh-oeaw/apis-core</p>
+                    <p>https://apisdev.acdh.oeaw.ac.at</p>
+                </section>
+            </div>
+        </div>
+<div id="hidden" style="display:none;">
+    <div id="header">
+        <div id="footer-left"><img src="{% static 'webpage/img/logo_acdh_new.png' %}" width="100"/></div>
+        <div id="footer-right"><small>matthias.schloegl@oeaw.ac.at</small></div>
+    </div>
+</div>
+{% endblock content %}
+{% block scripts %}
+{{ block.super }}
+        <script src="{% static 'webpage/libraries/bower_components/reveal.js/lib/js/head.min.js' %}"></script>
+        <script src="{% static 'webpage/libraries/bower_components/reveal.js/js/reveal.js' %}"></script>
+
+        <script>
+            // More info about config & dependencies:
+            // - https://github.com/hakimel/reveal.js#configuration
+            // - https://github.com/hakimel/reveal.js#dependencies
+            Reveal.initialize({
+                    width: 960,
+	                height: 700,
+                    // Factor of the display size that should remain empty around the content
+	                margin: 0.1,
+
+	                // Bounds for smallest/largest possible scale to apply to content
+	                minScale: 0.2,
+	                maxScale: 1.5,
+                    embedded: true,
+                dependencies: [
+                    { src: "{% static 'webpage/libraries/bower_components/reveal.js/plugin/markdown/marked.js' %}" },
+                    { src: "{% static 'webpage/libraries/bower_components/reveal.js/plugin/markdown/markdown.js' %}" },
+                    { src: "{% static 'webpage/libraries/bower_components/reveal.js/plugin/notes/notes.js' %}", async: true },
+                    { src: "{% static 'webpage/libraries/bower_components/reveal.js/plugin/highlight/highlight.js' %}", async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
+                ]
+            });
+        </script>
+        <style type="text/css">
+    /* 1. Style header/footer <div> so they are positioned as desired. */
+    #header-left {
+        position: absolute;
+        top: 0%;
+        left: 0%;
+    }
+    #header-right {
+        position: absolute;
+        top: 0%;
+        right: 0%;
+    }
+    #footer-left {
+        position: absolute;
+        bottom: 2%;
+        left: 2%;
+    }
+    #footer-right {
+        position: absolute;
+        bottom: 2%;
+        right: 10%;
+    }
+    video.video-apis {
+        left: 30%;
+        opacity: 0.8;
+        float: right;
+        width: 70%;
+        padding-bottom: 20px;
+    }
+    
+</style>
+
+<script type="text/javascript">
+    // 3. On Reveal.js ready event, copy header/footer <div> into each `.slide-background` <div>
+    var header = $('#header').html();
+    if ( window.location.search.match( /print-pdf/gi ) ) {
+        Reveal.addEventListener( 'ready', function( event ) {
+            $('.slide-background').append(header);
+        });
+    }
+    else {
+        $('div.reveal').append(header);
+   }
+</script>
+
+{% endblock scripts %}

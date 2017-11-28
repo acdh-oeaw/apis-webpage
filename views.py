@@ -23,6 +23,14 @@ def apis_view(request):
     return render(request, 'webpage/apis.html')
 
 
+def presentation_lyon17(request):
+    return render(request, 'webpage/presentation_lyon17.html')
+
+
+def presentations_list(request):
+    return render(request, 'webpage/presentations_list.html')
+
+
 #################################################################
 #				views for login/logout							#
 #################################################################

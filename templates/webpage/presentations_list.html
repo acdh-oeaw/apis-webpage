@@ -1,0 +1,27 @@
+{% extends "webpage/base.html" %}
+{% load staticfiles %}
+{% block content %}
+<h3>Presentations done within the APIS framework</h3>
+<table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Date</th>
+        <th>Venue</th>
+        <th>Type</th>
+        <th>Description</th>
+        <th>Link</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+          <td>23.11.2017</td>
+          <td><a href="http://dataforhistory.org/20171123-24">Lyon, France</a></td>
+          <td>Reveal.js (embedded)</td>
+          <td>Data for History is an international consortium founded on 24 November 2017 with the aim of improving
+               geo-historical data interoperability in the semantic web. Its purpose is to establish a common method for
+              modelling, curating and managing data in historical research. APIS was presented on the first day of the workshop</td>
+          <td><a href="{% url 'webpage:presentation_lyon17' %}">embedded version of the presentation</a></td>
+      </tr>
+    </tbody>
+  </table>
+{% endblock content %}}
