@@ -20,9 +20,14 @@
             link.href = window.location.search.match( /print-pdf/gi ) ? "{% static 'webpage/libraries/bower_components/reveal.js/css/print/pdf.css' %}" : "{% static 'webpage/libraries/bower_components/reveal.js/css/print/paper.css' %}";
             document.getElementsByTagName( 'head' )[0].appendChild( link );
         </script>
+        <style type="text/css">
+            div#content {
+                height: 80%;
+            }
+        </style>
 {% endblock scriptHeader %}
 {% block content %}
-        <div class="reveal" style="height: 800px">
+        <div class="reveal" style="height: 90%;">
             <div class="slides">
                 <section>
                     <h1>The APIS Project</h1>
