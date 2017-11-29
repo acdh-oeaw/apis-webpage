@@ -20,6 +20,8 @@
       <link rel="stylesheet" href="{% static 'webpage/libraries/scroll-to-top/css/ap-scroll-top.min.css'%}" />
       <!--leflet CSS -->
       <link rel="stylesheet" href="{% static 'webpage/libraries/bower_components/leaflet/dist/leaflet.css' %}" />
+      <link rel="stylesheet" href="{% static 'webpage/libraries/bower_components/components-font-awesome/css/font-awesome.min.css' %}">
+
       <!-- jQuery-->
       <script type="text/javascript" src="{% static 'webpage/libraries/bower_components/jquery/dist/jquery.min.js' %}"></script>
       <!-- Bootstrap -->
@@ -67,7 +69,6 @@
       {% block scriptHeader %}
       {% endblock %}
   </head>
-
   <body>
     <!-- Piwik -->
     <noscript>
@@ -322,6 +323,6 @@
           }
       )})}
 </script>
-    {% endblock %}
+    {% endblock scripts%}
   </body>
 </html>
