@@ -27,6 +27,10 @@ def presentation_lyon17(request):
     return render(request, 'webpage/presentation_lyon17.html')
 
 
+def presentation_innsbruck17(request):
+    return render(request, 'webpage/presentation_innsbruck17.html')
+
+
 def presentations_list(request):
     return render(request, 'webpage/presentations_list.html')
 
