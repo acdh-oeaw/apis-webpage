@@ -6,6 +6,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
         <title>APIS at a glance</title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
         <link rel="stylesheet" href="{% static 'webpage/libraries/bower_components/reveal.js/css/reveal.css' %}">
         <link rel="stylesheet" href="{% static 'webpage/libraries/bower_components/reveal.js/css/theme/simple.css' %}">
 
@@ -154,15 +155,15 @@
                 <section>
                     <section>
                         <h3>neuronal network I</h3>
-                        <img src="{% static 'webpage/img/lyon17/neuronal_net_v3_step1.svg' %}">
+                        <img src="{% static 'webpage/img/innsbruck17/neuronal_net_v3_step1.svg' %}">
                     </section>
                     <section>
                         <h3>neuronal network II</h3>
-                        <img src="{% static 'webpage/img/lyon17/neuronal_net_v3_step2.svg' %}">
+                        <img src="{% static 'webpage/img/innsbruck17/neuronal_net_v3_step2.svg' %}">
                     </section>
                     <section>
                         <h3>neuronal network III</h3>
-                        <img src="{% static 'webpage/img/lyon17/neuronal_net_v3_step3.svg' %}">
+                        <img src="{% static 'webpage/img/innsbruck17/neuronal_net_v3_step3.svg' %}">
                     </section>
                 </section>
                 <section>
@@ -226,7 +227,7 @@
                             var txt = $('#text-submit').val();
                             e.preventDefault();
                             $.ajax({
-                                url: 'http://127.0.0.1:8050/api2/nlp_model',
+                                url: 'https://apisdev.acdh.oeaw.ac.at/api2/nlp_model',
                                 data: {'model': 'innsbruck_model_2', 'text': txt},
                                 success: function(data){
                                     $('#results-text > table > tbody').empty();
@@ -276,8 +277,8 @@
                     { src: "{% static 'webpage/libraries/bower_components/reveal.js/plugin/markdown/marked.js' %}" },
                     { src: "{% static 'webpage/libraries/bower_components/reveal.js/plugin/markdown/markdown.js' %}" },
                     { src: "{% static 'webpage/libraries/bower_components/reveal.js/plugin/notes/notes.js' %}", async: true },
-                    { src: 'plugin/chart/Chart.min.js' },               
-                    { src: 'plugin/chart/csv2chart.js' },
+                    { src: "{% static 'webpage/libraries/bower_components/reveal.js/plugin/chart/Chart.min.js' %}" },               
+                    { src: "{% static 'webpage/libraries/bower_components/reveal.js/plugin/chart/csv2chart.js' %}",
                     { src: "{% static 'webpage/libraries/bower_components/reveal.js/plugin/highlight/highlight.js' %}", async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
                 ]
             });
