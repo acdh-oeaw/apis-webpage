@@ -226,7 +226,7 @@
                             var txt = $('#text-submit').val();
                             e.preventDefault();
                             $.ajax({
-                                url: 'https://apisdev.acdh.oeaw.ac.at/api2/nlp_model',
+                                url: 'https://apis.acdh.oeaw.ac.at/api2/nlp_model',
                                 data: {'model': 'innsbruck_model_2', 'text': txt},
                                 success: function(data){
                                     $('#results-text > table > tbody').empty();
