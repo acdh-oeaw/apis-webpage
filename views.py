@@ -62,3 +62,14 @@ def user_login(request):
 def user_logout(request):
     logout(request)
     return render_to_response('webpage/user_logout.html')
+
+
+@login_required
+def set_user_settings(request):
+    edit_views = request.GET.get('edit_views', False)
+    if edit_views == 'true':
+        edit_views = True
+    else:
+        edit_views = False
+    request.session['edit_views'] = edit_views
+    return HttpResponseRedirect("/")
