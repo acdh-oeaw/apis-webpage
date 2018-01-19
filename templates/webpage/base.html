@@ -154,10 +154,10 @@
                         <a href="{% url 'webpage:user_logout' %}">Log-Out</a>
                     </li>
                     <li>
-                        <a href="{% url 'webpage:set_user_settings' %}?edit_views=true">use edit views</a>
-                    </li>
-                    <li>
-                        <a href="{% url 'webpage:set_user_settings' %}?edit_views=false">use read only views</a>
+                      <div class="form-check" style="padding-left: 20px">
+                        <input type="checkbox" class="form-check-input" id="ckeck_edit_views" {% if  request.session.edit_views %}checked{% endif %}>
+                        <label class="form-check-label" for="ckeck_edit_views">Use edit views</label>
+                      </div>
                     </li>
                     <li>
                         <a href="{% url 'registration_register' %}">Registration</a>
@@ -214,6 +214,20 @@
                     'onInit': function(evt) {
                         console.log('apScrollTop: init');
                     }
+                });
+                $('#ckeck_edit_views').on('change', function(){
+                  var edit_views = $('#ckeck_edit_views').prop('checked');
+                  $.ajax({
+                    url: "{% url 'webpage:set_user_settings' %}",
+                    data: {'edit_views': edit_views},
+                    success: function(data){
+                      if (data.edit_views) {
+                        $('#check_edit_views').prop('checked', true)
+                      } else {
+                        $('#check_edit_views').prop('checked', false)
+                      }
+                    }
+                  })
                 });
             });
     </script>

@@ -1,3 +1,5 @@
+import json
+
 from django.shortcuts import render
 from django.http import HttpResponse, HttpResponseRedirect, HttpResponseForbidden
 from django.shortcuts import render, render_to_response, get_object_or_404, redirect
@@ -66,10 +68,12 @@ def user_logout(request):
 
 @login_required
 def set_user_settings(request):
+    res = dict()
     edit_views = request.GET.get('edit_views', False)
     if edit_views == 'true':
         edit_views = True
     else:
         edit_views = False
     request.session['edit_views'] = edit_views
-    return HttpResponseRedirect("/")
+    res['edit_views'] = edit_views
+    return HttpResponse(json.dumps(res), content_type='application/json')
