@@ -37,6 +37,7 @@
       <script src="{% static 'webpage/libraries/scroll-to-top/js/ap-scroll-top.min.js'%}"></script>
       <!--leaflet js -->
       <script src="{% static 'webpage/libraries/bower_components/leaflet/dist/leaflet.js' %}"></script>
+      <script src="{% static 'webpage/autocomplete_js_tooltips.js' %}"></script>
       <link rel="stylesheet" href="{% static 'webpage/libraries/bower_components/leaflet.markercluster/dist/MarkerCluster.css'%}" />
       <link rel="stylesheet" href="{% static 'webpage/libraries/bower_components/leaflet.markercluster/dist/MarkerCluster.Default.css'%}" />
       <!--
@@ -286,6 +287,26 @@
     })
     </script>
         <script type="application/javascript">
+        $('body').on('mouseenter', '.apis-autocomplete-span:not(.tooltipstered)', function() {
+                    $(this).tooltipster({
+                      theme: 'tooltipster-light',
+                      side: 'left',
+                      contentAsHTML: true,
+
+                      functionBefore: function(instance, helper) {
+                        $('#container2').remove();
+                        instance.content('<div class="autocomplete-vis-container" id="container2" style="height: 200px; width: 200px"></div>');
+                      },
+                      functionReady: function(instance, helper){
+                        var func = 'autocomplete_vis_'+$(helper.origin).data('vis-tooltip');
+                        var res = window[func]($(helper.origin));
+                        console.log(res);
+                      },
+                    })
+                    .tooltipster('reposition')
+                    .tooltipster('open');
+                });
+
         function initiate_compare_tooltip() {
           //TODO: correctly detach the tooltips before reinitializing them
         $('.compare_tooltip').tooltipster({
