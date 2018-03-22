@@ -1,6 +1,8 @@
 from django.conf.urls import url, include
 from . import views
 
+app_name = 'webpage'
+
 urlpatterns = [
     url(r'^$', views.start_view, name="start"),
     url(r'^paas-project/$', views.paas_view, name="paas-project"),
