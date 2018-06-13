@@ -8,13 +8,13 @@ function find_related_object(elem, data) {
 
 function get_menu_object(elem) {
     if (elem['kind'] == 'txt') {
-    var res = '<a class="list-group-item">'+elem['name']+'</a>'}  
+    var res = '<a class="list-group-item">'+elem['name']+'</a>'}
     else if (elem['kind'] == 'frm') {
         var res = '<a class="list-group-item con-menu-item" data-endpoint="'+elem.api.api_endpoint+'">'+elem['name']+'</a>'
     } else if (elem['kind'] == 'fn') {
         var res = '<a class="list-group-item" onclick='+elem.api.api_endpoint+'>'+elem['name']+'</a>'
     }
-    
+
     return res
 }
 
@@ -34,7 +34,7 @@ function create_nested_menu(data, data_list) {
     //console.log(data)
     var res = ''
     for (x in data) {
-        
+
        // res += '<li class="list-group-item">'+data_list[x]['name']
         if (data[x] instanceof Object && Object.keys(data[x]).length > 0) {
             res += '<a href="#HighlighterMenu'+data_list[x]['id']+'" class="list-group-item" data-toggle="collapse" data-parent="#HighlighterMenu'+data_list[x]['id']+'">'+data_list[x]['name']+'<i class="fa fa-caret-down"></i></a>\
@@ -115,7 +115,8 @@ function get_selected_text(txt_id) {
 
 
 function init_apis_highlighter(project_id, entity_id) {
-
+  if (typeof $.ApisHigh == 'undefined') {
+      $.ApisHigh = {}; };
     return $.ajax({
         type: 'GET',
         url: "/api/HLProjects/"+project_id.toString()+"/",
@@ -123,7 +124,6 @@ function init_apis_highlighter(project_id, entity_id) {
             //menu = create_apis_menu(data.results[0])
         //$( "#test_menu" ).append(menu)
         //console.log(data)
-        $.ApisHigh = {}
         $.ApisHigh.entity_id = entity_id
         var lst_class = []
         for (i=0; i < data['texthigh_set'].length; i++) {
@@ -187,4 +187,3 @@ function init_apis_highlighter(project_id, entity_id) {
     })
 
 }
-
