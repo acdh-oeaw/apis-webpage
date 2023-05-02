@@ -20,8 +20,6 @@ try:
 except AttributeError:
     PROJECT_CSS = "{}/style.css".format(PROJECT_STATIC_URL)
 
-PROJECT_METADATA = {}
-if getattr(settings, "PROJECT_DEFAULT_MD"):
-    PROJECT_METADATA = settings.PROJECT_DEFAULT_MD
+PROJECT_METADATA = getattr(settings, "PROJECT_DEFAULT_MD", {})
 
 SHARED_URL = settings.SHARED_URL
