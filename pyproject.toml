@@ -12,7 +12,16 @@ Django = ">=3.0"
 [tool.poetry.group.dev.dependencies]
 black = "22.12"
 ruff = "^0.0.272"
+djlint = {version = "^1.31.0", python = ">=3.11,<4.0.0"}
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]
 build-backend = "poetry.core.masonry.api"
+
+
+[tool.djlint]
+indent=2
+profile="django"
+extension="html"
+blank_line_before_tag="block,if"
+blank_line_after_tag="endif,endblock"

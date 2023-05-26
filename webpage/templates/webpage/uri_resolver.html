@@ -1,28 +1,27 @@
 {% extends "webpage/base.html" %}
 {% load static %}
 {% load webpage_extras %}
-{% block content %}
 
-<div class="container">
-  <div class="card card-index">
-    <div class="card-body">
-      <h1 class="text-center title-index">
-        URI-Resolver
-      </h1>
-      <p class="text-center text-muted paragraph-index">
-        All entities in APIS are related to at least one URI.
-      </p>
-      <hr class="hr-index" />
+{% block content %}
+  <div class="container">
+    <div class="card card-index">
+      <div class="card-body">
+        <h1 class="text-center title-index">URI-Resolver</h1>
+        <p class="text-center text-muted paragraph-index">All entities in APIS are related to at least one URI.</p>
+        <hr class="hr-index" />
         <form class="form-horizontal" action="/apis/api2/uri/" method="get">
           <fieldset>
             <div class="form-group">
               <label class="col-md-4 control-label" for="uri">URI</label>
               <div class="col-md-8">
-                <input id="uri" name="uri" type="text" placeholder="https://uri-to-my-entity.com" class="form-control input-md" required="">
-
+                <input id="uri"
+                       name="uri"
+                       type="text"
+                       placeholder="https://uri-to-my-entity.com"
+                       class="form-control input-md"
+                       required="">
               </div>
             </div>
-
             <!-- Multiple Radios (inline) -->
             <div class="form-group">
               <label class="col-md-4 control-label" for="radios">output format</label>
@@ -39,9 +38,12 @@
             </div>
           </fieldset>
           <div class="text-right">
-            <input type="submit" value="Submit" class="btn btn-lg btn-index pulse" class="pull-right">
+            <input type="submit"
+                   value="Submit"
+                   class="btn btn-lg btn-index pulse"
+                   class="pull-right">
           </div>
         </form>
+      </div>
     </div>
-  </div>
   {% endblock %}
