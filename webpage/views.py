@@ -13,9 +13,9 @@ from django.shortcuts import render
 from django.template import loader
 from django.views.generic import TemplateView
 
-from . forms import form_user_login
-from . utils import PROJECT_METADATA as PM
-from . utils import PROJECT_TITLE_IMG, PROJECT_LOGO
+from .forms import form_user_login
+from .utils import PROJECT_METADATA as PM
+from .utils import PROJECT_TITLE_IMG, PROJECT_LOGO
 
 
 def get_imprint_url():
@@ -31,7 +31,7 @@ def get_imprint_url():
 
 
 class ImprintView(TemplateView):
-    template_name = 'webpage/imprint.html'
+    template_name = "webpage/imprint.html"
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -39,9 +39,11 @@ class ImprintView(TemplateView):
         r = requests.get(get_imprint_url())
 
         if r.status_code == 200:
-            context['imprint_body'] = "{}".format(r.text)
+            context["imprint_body"] = "{}".format(r.text)
         else:
-            context['imprint_body'] = """
+            context[
+                "imprint_body"
+            ] = """
             On of our services is currently not available. Please try it later or write an email to
             acdh@oeaw.ac.at; if you are service provide, make sure that you provided ACDH_IMPRINT_URL and REDMINE_ID
             """
@@ -86,8 +88,9 @@ def user_login(request):
                     # prevent redirect loop on login attempt immediately following logout
                     redirect_page = "/"
                 return HttpResponseRedirect(redirect_page)
-            return HttpResponse(f"User '{cd['username']}' does not exist "
-                                f"or password is wrong.")
+            return HttpResponse(
+                f"User '{cd['username']}' does not exist " f"or password is wrong."
+            )
     else:
         form = form_user_login()
         return render(request, "webpage/user_login.html", {"form": form})
@@ -134,9 +137,9 @@ def project_info(request):
     info_dict["framework"] = "apis"
     info_dict["version webpage"] = "{}/commit/{}".format(
         info_dict["github"],
-        subprocess.check_output(
-            ["git", "describe", "--always"], cwd=settings.BASE_DIR
-        ).strip().decode("utf8"),
+        subprocess.check_output(["git", "describe", "--always"], cwd=settings.BASE_DIR)
+        .strip()
+        .decode("utf8"),
     )
     rest_settings = settings.REST_FRAMEWORK.get("DEFAULT_PERMISSION_CLASSES", [])
     if "ReadOnly" in " ".join(rest_settings):
@@ -144,26 +147,36 @@ def project_info(request):
     else:
         info_dict["public"] = "restricted"
     vers = []
-    for v in info_dict['version']:
+    for v in info_dict["version"]:
         res2 = dict()
         mod = import_module(v)
-        res2['library'] = v
-        res2["version"] = getattr(mod, '__version__', 'undefined')
+        res2["library"] = v
+        res2["version"] = getattr(mod, "__version__", "undefined")
         try:
-            g_url = subprocess.check_output(
-                ["git", "config", "--get", "remote.origin.url"], cwd="{}/{}/".format(settings.BASE_DIR, v)
-            ).strip().decode('utf8')
-            git_url_t = re.match('^\w+@(.+):(.+)\.git$', g_url)
+            g_url = (
+                subprocess.check_output(
+                    ["git", "config", "--get", "remote.origin.url"],
+                    cwd="{}/{}/".format(settings.BASE_DIR, v),
+                )
+                .strip()
+                .decode("utf8")
+            )
+            git_url_t = re.match("^\w+@(.+):(.+)\.git$", g_url)
             if git_url_t:
                 g_url = "https://{}/{}".format(git_url_t.group(1), git_url_t.group(2))
-            g_commit = subprocess.check_output(
-                ["git", "describe", "--always"], cwd="{}/{}/".format(settings.BASE_DIR, v)
-            ).strip().decode("utf8"),
+            g_commit = (
+                subprocess.check_output(
+                    ["git", "describe", "--always"],
+                    cwd="{}/{}/".format(settings.BASE_DIR, v),
+                )
+                .strip()
+                .decode("utf8"),
+            )
             if not isinstance(g_commit, str):
                 g_commit = g_commit[0]
             res2["git"] = "{}/commit/{}".format(g_url, g_commit)
         except Exception as e:
             print(e)
         vers.append(res2)
-    info_dict['version'] = vers
+    info_dict["version"] = vers
     return JsonResponse(info_dict)

@@ -4,8 +4,10 @@ from apis_ontology.models import construct_properties
 
 
 class Command(BaseCommand):
-    help = "Create and label relationships between entities by running " \
-           "the construct_properties() function in your app's models.py file."
+    help = (
+        "Create and label relationships between entities by running "
+        "the construct_properties() function in your app's models.py file."
+    )
 
     def handle(self, *args, **options):
         try:
@@ -14,8 +16,9 @@ class Command(BaseCommand):
                 self.style.SUCCESS("Successfully ran construct_properties()")
             )
         except Exception as e:
-            raise CommandError(f"construct_properties() raised the "
-                               f"following error(s):\n{e}")
+            raise CommandError(
+                f"construct_properties() raised the " f"following error(s):\n{e}"
+            )
 
         try:
             props = Property.objects.all()
