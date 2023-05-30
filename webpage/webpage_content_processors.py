@@ -1,5 +1,4 @@
 from django.conf import settings
-from .utils import PROJECT_METADATA
 from .utils import PROJECT_TITLE_IMG, PROJECT_LOGO, PROJECT_CSS, SHARED_URL
 
 
@@ -38,5 +37,5 @@ def get_db_name(request):
     try:
         db_name = settings.DATABASES["default"]["NAME"]
         return {"DB_NAME": db_name}
-    except Exception as e:
+    except Exception:
         return {}

@@ -1,5 +1,3 @@
-import requests
-
 from django.conf import settings
 
 PROJECT_STATIC_URL = "{}{}".format(settings.PROJECT_SHARED, settings.PROJECT_NAME)

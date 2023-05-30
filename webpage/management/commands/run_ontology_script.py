@@ -1,7 +1,7 @@
 # from apis_core.apis_entities.models import *
 # from apis_core.apis_relations.models import *
 # from apis_core.apis_vocabularies.models import *
-from django.core.management.base import BaseCommand, CommandError
+from django.core.management.base import BaseCommand
 import importlib
 
 # import random
