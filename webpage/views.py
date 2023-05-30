@@ -35,7 +35,6 @@ class ImprintView(TemplateView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        imprint_url = get_imprint_url()
         r = requests.get(get_imprint_url())
 
         if r.status_code == 200:
@@ -44,8 +43,9 @@ class ImprintView(TemplateView):
             context[
                 "imprint_body"
             ] = """
-            On of our services is currently not available. Please try it later or write an email to
-            acdh@oeaw.ac.at; if you are service provide, make sure that you provided ACDH_IMPRINT_URL and REDMINE_ID
+            On of our services is currently not available. Please try it later or write
+            an email to acdh@oeaw.ac.at; if you are service provide, make sure that you
+            provided ACDH_IMPRINT_URL and REDMINE_ID
             """
         return context
 
@@ -65,7 +65,7 @@ class GenericWebpageView(TemplateView):
             template_name = "webpage/{}.html".format(
                 self.kwargs.get("template", "index")
             )
-        except:
+        except Exception:
             template_name = "webpage/index.html"
         return [template_name]
 
@@ -85,7 +85,8 @@ def user_login(request):
                 login(request, user)
                 redirect_page = request.GET.get("next", "/")
                 if "logout" in redirect_page:
-                    # prevent redirect loop on login attempt immediately following logout
+                    # prevent redirect loop on login
+                    # attempt immediately following logout
                     redirect_page = "/"
                 return HttpResponseRedirect(redirect_page)
             return HttpResponse(
