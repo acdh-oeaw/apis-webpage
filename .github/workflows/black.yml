@@ -6,6 +6,6 @@ on: [push, pull_request]
 
 jobs:
   black:
-    uses: acdh-oeaw/prosnet-workflows/.github/workflows/poetry-black.yml@birger/fix-black-2
+    uses: acdh-oeaw/prosnet-workflows/.github/workflows/poetry-black.yml@dev
     with:
       src: "."
