@@ -6,6 +6,6 @@ on: [push, pull_request]
 
 jobs:
   dlint:
-    uses: acdh-oeaw/prosnet-workflows/.github/workflows/poetry-djlint.yml@dev
+    uses: acdh-oeaw/prosnet-workflows/.github/workflows/poetry-djlint.yml@v0.3.0
     with:
       src: "."
