@@ -19,14 +19,8 @@ from .utils import PROJECT_TITLE_IMG, PROJECT_LOGO
 
 
 def get_imprint_url():
-    try:
-        base_url = settings.ACDH_IMPRINT_URL
-    except AttributeError:
-        base_url = "https://redmine-service-issue.acdh.oeaw.ac.at/"
-    try:
-        redmine_id = settings.REDMINE_ID
-    except AttributeError:
-        redmine_id = "go-register-a-redmine-service-issue"
+    base_url = getattr(settings, "ACDH_IMPRINT_URL", "https://imprint.acdh.oeaw.ac.at/")
+    redmine_id = getattr(settings, "REDMINE_ID", "go-register-a-redmine-service-issue")
     return "{}{}".format(base_url, redmine_id)
 
 
