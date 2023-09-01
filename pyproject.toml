@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "webpage"
-version = "0.1"
+version = "0.1.0"
 description = "Webpage frontend for APIS projects"
 authors = ["Matthias Schlögl <m.schloegl@gmail.com>"]
 license = "MIT"
