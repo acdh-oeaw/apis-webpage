@@ -134,7 +134,7 @@ _paq.push(['enableLinkTracking']);
         <div class="dropdown-menu dropdown-menu-right">
           <div class="dropdown-item">
             <a class="nav-link p-0" href="{% url 'webpage:user_logout' %}">
-              <span class="feather-32" data-feather="log-out"></span>
+              <span class="material-symbols-outlined">logout</span>
               log out
             </a>
           </div>
@@ -144,7 +144,7 @@ _paq.push(['enableLinkTracking']);
       <li class="nav-item dropdown ml-auto">
         <a class="nav-link p-0"
            href="{% url 'webpage:user_login' %}?next={{ request.path|urlencode }}">
-          <span class="feather-32" data-feather="log-in"></span>
+          <span class="material-symbols-outlined">login</span>
         </a>
       </li>
     {% endif %}
