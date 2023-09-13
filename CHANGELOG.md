@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.2.0](https://github.com/acdh-oeaw/apis-webpage/compare/v0.1.0...v0.2.0) (2023-09-13)
+
+
+### Features
+
+* cleanup base template ([6e29534](https://github.com/acdh-oeaw/apis-webpage/commit/6e2953437d46690ea601d6fd56ada7902fbfce5a))
+
 ## 0.1.0 (2023-09-01)
 
 
