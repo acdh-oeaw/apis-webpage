@@ -81,44 +81,14 @@ _paq.push(['enableLinkTracking']);
          href="{% url 'webpage:staticpage' template='imprint' %}">Imprint | Impressum</a>
     </div>
   </li>
-  <li class="nav-item dropdown">
-    <a href="#"
-       class="nav-link dropdown-toggle"
-       data-toggle="dropdown"
-       role="button"
-       aria-haspopup="true"
-       aria-expanded="false">
-      Entities
-      <span class="caret" />
-    </a>
-    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-      {% for ent in entities_links %}
-        <a class="dropdown-item"
-           href="{% url 'apis:apis_entities:generic_entities_list' ent.0 %}">{{ ent.1 }}</a>
-      {% endfor %}
-      <a class="dropdown-item"
-         href="{% url 'apis:apis_metainfo:uri_browse' %}">URIs</a>
-      <a class="dropdown-item"
-         href="{% url 'webpage:staticpage' template='uri_resolver' %}">URI-Resolver</a>
-    </div>
-  </li>
-  <li class="nav-item dropdown">
-    <a href="#"
-       class="nav-link dropdown-toggle"
-       data-toggle="dropdown"
-       role="button"
-       aria-haspopup="true"
-       aria-expanded="false">Relations
-      <span class="caret" />
-    </a>
-    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-      {% for ent in relations_list %}
-        <a class="dropdown-item"
-           href="{% url 'apis:apis_relations:generic_relations_list' ent %}">{{ ent|title }}</a>
-      {% endfor %}
-    </div>
-  </li>
+  {{ block.super }}
 {% endblock main-menu %}
+
+{% block entities-menu-items %}
+  {{ block.super }}
+  <a class="dropdown-item"
+     href="{% url 'webpage:staticpage' template='uri_resolver' %}">URI-Resolver</a>
+{% endblock entities-menu-items %}
 
 {% block userlogin-menu %}
   <ul class="navbar-nav justify-content-end">
