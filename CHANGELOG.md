@@ -1,5 +1,22 @@
 # Changelog
 
+## [1.0.0](https://github.com/acdh-oeaw/apis-webpage/compare/v0.2.0...v1.0.0) (2023-10-16)
+
+
+### ⚠ BREAKING CHANGES
+
+* drop management commands
+
+### Features
+
+* replaces feather icons with material-symbols ([25ae6c2](https://github.com/acdh-oeaw/apis-webpage/commit/25ae6c27182486fd57c17d7cb1ea3dd8b795b31e))
+* use new apis-core menu-item blocks ([da66bf4](https://github.com/acdh-oeaw/apis-webpage/commit/da66bf463d8a99e07ed3811d38b39f625c7895bb))
+
+
+### Code Refactoring
+
+* drop management commands ([c925992](https://github.com/acdh-oeaw/apis-webpage/commit/c925992f29ccf5436b9bf8f0846b230425b34c70)), closes [#16](https://github.com/acdh-oeaw/apis-webpage/issues/16)
+
 ## [0.2.0](https://github.com/acdh-oeaw/apis-webpage/compare/v0.1.0...v0.2.0) (2023-09-13)
 
 
