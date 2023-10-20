@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.0.1](https://github.com/acdh-oeaw/apis-webpage/compare/v1.0.0...v1.0.1) (2023-10-20)
+
+
+### Bug Fixes
+
+* link to webpage imprint in imprint block ([6a2b594](https://github.com/acdh-oeaw/apis-webpage/commit/6a2b594481820e23bd6bc406f57ace09e7d67e25)), closes [#22](https://github.com/acdh-oeaw/apis-webpage/issues/22)
+* use upstreams new navbar-css block to set navbar style ([33bd3b2](https://github.com/acdh-oeaw/apis-webpage/commit/33bd3b26572ef540437fef40c1e9285a733d5b4b))
+
 ## [1.0.0](https://github.com/acdh-oeaw/apis-webpage/compare/v0.2.0...v1.0.0) (2023-10-16)
 
 
