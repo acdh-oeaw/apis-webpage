@@ -4,5 +4,5 @@
 .python-version
 
 # ---- Python-specific
-*.pyc
-__pycache__
+.*.pyc
+__pycache__/
