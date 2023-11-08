@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.0.2](https://github.com/acdh-oeaw/apis-webpage/compare/v1.0.1...v1.0.2) (2023-11-08)
+
+
+### Bug Fixes
+
+* drop fundament.css ([fcca28e](https://github.com/acdh-oeaw/apis-webpage/commit/fcca28e2f8584dab954f93250e2bfb19e8b5048f)), closes [#34](https://github.com/acdh-oeaw/apis-webpage/issues/34)
+
 ## [1.0.1](https://github.com/acdh-oeaw/apis-webpage/compare/v1.0.0...v1.0.1) (2023-10-20)
 
 
