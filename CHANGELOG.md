@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.0.3](https://github.com/acdh-oeaw/apis-webpage/compare/v1.0.2...v1.0.3) (2023-11-09)
+
+
+### Bug Fixes
+
+* drop scripts block override ([31fd941](https://github.com/acdh-oeaw/apis-webpage/commit/31fd9410be9bd1926405ad470373ffcadcb83d6b)), closes [#37](https://github.com/acdh-oeaw/apis-webpage/issues/37)
+
 ## [1.0.2](https://github.com/acdh-oeaw/apis-webpage/compare/v1.0.1...v1.0.2) (2023-11-08)
 
 
